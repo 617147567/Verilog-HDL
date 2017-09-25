@@ -1,0 +1,47 @@
+module Ex2(clk,sel,counter,Z);
+
+input   clk,sel;
+output  Z,counter;
+
+reg Z;
+reg[8:0] counter;
+
+always@(posedge clk)
+case(sel)
+1'b 0:
+ if((counter>=0&&counter<=12)||(counter>=99&&counter<=112)||(counter>=199&&counter<=213)||(counter>=299&&counter<=313))
+  begin 
+   counter<=counter+1;
+	Z=1;
+  end
+ else if(counter==399)
+  begin
+    counter<=0;
+   Z=0;
+	end
+ else
+  begin
+    counter<=counter+1;
+	Z=0;
+end
+
+1'b 1:
+ if((counter>=0&&counter<=13)||(counter>=99&&counter<=113)||(counter>=199&&counter<=214)||(counter>=299&&counter<=314))
+  begin 
+   counter<=counter+1;
+	Z=1;
+  end
+ else if(counter==399)
+  begin
+    counter<=0;
+   Z=0;
+	end
+ else
+   begin
+    counter<=counter+1;
+	Z=0;
+	end
+ endcase
+
+ endmodule
+ 
